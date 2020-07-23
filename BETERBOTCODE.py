@@ -70,10 +70,10 @@ class TweetListener(tweepy.StreamListener):
       except AttributeError:
         tweet_text = status.text
         self.tweet_count += 1
-    
-    print(f"Username: {status.user.screen_name}")
-    print(f"Tweet: {tweet_text}")
-    print(f"Tweet_ID: {status.id_str}")
+    if status.user.screen_name in self.reply_to_list or '@BETERBIFFIN2' in tweet_text:
+      print(f"Username: {status.user.screen_name}")
+      print(f"Tweet: {tweet_text}")
+      print(f"Tweet_ID: {status.id_str}")
 
     if status.user.screen_name in self.reply_to_list:
       if status.user.screen_name == "kawaiiouran":
@@ -96,9 +96,10 @@ class TweetListener(tweepy.StreamListener):
         print(f"replied to {status.user.screen_name}")
 
     else:
-      print(f"@{status.user.screen_name} has @ed you /n their tweet says {tweet_text}")
-      api.update_status(status=f"@{status.user.screen_name} WHO HAS SUMMONED ME", in_reply_to_status_id=status.id_str)
-      print(f"replied to @{status.user.screen_name}")
+      if '@BETERBIFFIN2' in tweet_text:
+        print(f"@{status.user.screen_name} has @ed you /n their tweet says {tweet_text}")
+        api.update_status(status=f"@{status.user.screen_name} WHO HAS SUMMONED ME", in_reply_to_status_id=status.id_str)
+        print(f"replied to @{status.user.screen_name}")
 
     return self.tweet_count != self.tweet_limit
     
@@ -109,4 +110,4 @@ class TweetListener(tweepy.StreamListener):
 
 tweet_listener = TweetListener(api)
 tweet_stream = tweepy.Stream(auth=api.auth, listener=tweet_listener)
-tweet_stream.filter(follow = [kelli_acc_id, trump_acc_id, test_acc_id, elon_musk_id, barack_obama_id, joe_biden_id, hillary_clinton_id, caucasian_james_id, lil_nas_x_id], is_async=True)
+tweet_stream.filter(follow = [kelli_acc_id, trump_acc_id, test_acc_id, elon_musk_id, barack_obama_id, joe_biden_id, hillary_clinton_id, caucasian_james_id, lil_nas_x_id],is_async=True)
