@@ -40,7 +40,7 @@ for status in tweepy.Cursor(api.user_timeline, id="realDonaldTrump").items(5):
 
 
 class TweetListener(tweepy.StreamListener):
-    def __init__(self, api, limit=5):
+    def __init__(self, api, limit=0):
         self.tweet_count = 0
         self.tweet_limit = limit
         self.reply_to_list = ["realDonaldTrump", "kawaiiouran", test_acc_username, "elonmusk", "JoeBiden",
