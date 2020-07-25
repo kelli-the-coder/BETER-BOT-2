@@ -77,28 +77,28 @@ class TweetListener(tweepy.StreamListener):
 
     if status.user.screen_name in self.reply_to_list:
       if status.user.screen_name == "kawaiiouran":
-        api.update_status(status="@kawaiiouran Kelli you are so cool and also awesome",in_reply_to_status_id=status.id_str)
+        api.update_status(status=f"@kawaiiouran Kelli you are so cool and also awesome {random.randint(1, 100000)}",in_reply_to_status_id=status.id_str)
         print("replied to kawaii ouran")
       elif status.user.screen_name == "realDonaldTrump":
-        api.update_status(status="@realDonaldTrump pee pee poo poo", in_reply_to_status_id=status.id_str)
+        api.update_status(status=f"@realDonaldTrump pee pee poo poo {random.randint(1, 100000)}", in_reply_to_status_id=status.id_str)
         print("replied to realDonaldTrump")
       elif status.user.screen_name == test_acc_username:
-        api.update_status(status="@Testacc81222228 Whats up my broski????", in_reply_to_status_id = status.id_str)
+        api.update_status(status=f"@Testacc81222228 Whats up my broski???? {random.randint(1, 100000)}", in_reply_to_status_id = status.id_str)
         print("Replied to test acc")
       elif status.user.screen_name == "elonmusk":
-        api.update_status(status="@elonmusk Can I get a free Tesla?", in_reply_to_status_id=status.id_str)
+        api.update_status(status=f"@elonmusk Can I get a free Tesla? {random.randint(1, 100000)}", in_reply_to_status_id=status.id_str)
         print("replied to elon musk")
       elif status.user.screen_name == "BarackObama":
-        api.update_status(status="@BarackObama Is your favorite vegetable barack-oli?", in_reply_to_status_id=status.id_str)
+        api.update_status(status=f"@BarackObama Is your favorite vegetable barack-oli? {random.randint(1, 100000)}", in_reply_to_status_id=status.id_str)
         print("replied to Barack Obama")
       else:
-        api.update_status(status=f"@{status.user.screen_name} pee pee poo poo", in_reply_to_status_id=status.id_str)
+        api.update_status(status=f"@{status.user.screen_name} pee pee poo poo {random.randint(1, 100000)}", in_reply_to_status_id=status.id_str)
         print(f"replied to {status.user.screen_name}")
 
     else:
       if '@BETERBIFFIN2' in tweet_text:
         print(f"@{status.user.screen_name} has @ed you /n their tweet says {tweet_text}")
-        api.update_status(status=f"@{status.user.screen_name} WHO HAS SUMMONED ME", in_reply_to_status_id=status.id_str)
+        api.update_status(status=f"@{status.user.screen_name} WHO HAS SUMMONED ME {random.randint(1, 100000)}", in_reply_to_status_id=status.id_str)
         print(f"replied to @{status.user.screen_name}")
 
     return self.tweet_count != self.tweet_limit
