@@ -13,6 +13,7 @@ joe_biden_id = "939091"
 hillary_clinton_id = "1339835893"
 caucasian_james_id = "272985460"
 lil_nas_x_id = "754006735468261376"
+pokimane_id = "2244953047"
 
 print("code running")
 
@@ -52,7 +53,7 @@ class TweetListener(tweepy.StreamListener):
   def __init__(self, api, limit=0):
     self.tweet_count = 0
     self.tweet_limit = limit
-    self.reply_to_list = ["realDonaldTrump", "kawaiiouran", test_acc_username, "elonmusk", "JoeBiden", "HillaryClinton", "BarackObama", "CaucasianJames", "LilNasX"]
+    self.reply_to_list = ["realDonaldTrump", "kawaiiouran", test_acc_username, "elonmusk", "JoeBiden", "HillaryClinton", "BarackObama", "CaucasianJames", "LilNasX", "pokimanelol"]
     super().__init__(api)
 
   def on_status(self, status):
@@ -71,7 +72,7 @@ class TweetListener(tweepy.StreamListener):
       except AttributeError:
         tweet_text = status.text
         self.tweet_count += 1
-    if status.user.screen_name in self.reply_to_list or '@BETERBIFFIN2' in tweet_text:
+    if status.user.screen_name in self.reply_to_list or '@BETERBIFFIN3' in tweet_text:
       print(f"Username: {status.user.screen_name}")
       print(f"Tweet: {tweet_text}")
       print(f"Tweet_ID: {status.id_str}")
@@ -92,12 +93,15 @@ class TweetListener(tweepy.StreamListener):
       elif status.user.screen_name == "BarackObama":
         api.update_status(status=f"@BarackObama Is your favorite vegetable barack-oli? {random.randint(1, 100000)}", in_reply_to_status_id=status.id_str)
         print("replied to Barack Obama")
+      elif status.user.screen_name == "pokimanelol":
+        api.update_status(status=f"@pokimanelol hey poki... uhhh i just wanted to know if u saw my $600 donation while u were streaming the other day.. you didn't say my name so i didnt know if u saw it......but either way its whatever ig. hope u have a good day :) {random.randint(1, 100000)}", in_reply_to_status_id=status.id_str)
+        print("replied to @pokimanelol")
       else:
         api.update_status(status=f"@{status.user.screen_name} pee pee poo poo {random.randint(1, 100000)}", in_reply_to_status_id=status.id_str)
         print(f"replied to {status.user.screen_name}")
 
     else:
-      if '@BETERBIFFIN2' in tweet_text:
+      if '@BETERBIFFIN3' in tweet_text:
         print(f"@{status.user.screen_name} has @ed you /n their tweet says {tweet_text}")
         api.update_status(status=f"@{status.user.screen_name} WHO HAS SUMMONED ME {random.randint(1, 100000)}", in_reply_to_status_id=status.id_str)
         print(f"replied to @{status.user.screen_name}")
@@ -111,4 +115,4 @@ class TweetListener(tweepy.StreamListener):
 
 tweet_listener = TweetListener(api)
 tweet_stream = tweepy.Stream(auth=api.auth, listener=tweet_listener)
-tweet_stream.filter(follow = [kelli_acc_id, trump_acc_id, test_acc_id, elon_musk_id, barack_obama_id, joe_biden_id, hillary_clinton_id, caucasian_james_id, lil_nas_x_id], track = ["@BETERBIFFIN2"], is_async=True)
+tweet_stream.filter(follow = [kelli_acc_id, trump_acc_id, test_acc_id, elon_musk_id, barack_obama_id, joe_biden_id, hillary_clinton_id, caucasian_james_id, lil_nas_x_id, pokimane_id], track = ["@BETERBIFFIN3"], is_async=True)
